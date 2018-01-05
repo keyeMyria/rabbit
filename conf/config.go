@@ -26,6 +26,7 @@ type FlagConfig struct {
 	DbInit      *bool
 	DbInitForce *bool
 	Rbac        *bool
+	Fill        *int
 }
 
 var (

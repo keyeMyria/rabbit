@@ -21,12 +21,15 @@ import (
 	"github.com/hunterhug/rabbit/models/blog"
 )
 
-func InitData() {
+func InitBaseData() {
 	InsertUser()
 	InsertGroup()
 	InsertRole()
 	InsertNodes()
 	InsertConfig()
+}
+
+func FillData() {
 	InsertCategory()
 	InsertRoll()
 	InsertPaper()
@@ -99,6 +102,7 @@ func InsertCategory() {
 }
 
 func InsertPaper() {
+	fmt.Println("insert paper start")
 	aaa := []string{
 		"/file/image/46/68756e746572687567aadc0c7438bb9e28d2c4eeaa310828e8.png",
 		"/file/image/12/68756e74657268756795ad72d42c7ef1b56c04c66297db1c27.jpeg",
@@ -134,6 +138,7 @@ Dao le. Kun a sincere Sun what taste as a surname Ju Qi, sow not You Si Xiao typ
 }
 
 func InsertRoll() {
+	fmt.Println("insert roll start")
 	rolls := map[string]string{
 		"tuzi":   "/file/image/46/68756e746572687567aadc0c7438bb9e28d2c4eeaa310828e8.png",
 		"me":     "/file/image/37/68756e7465726875673308fd68c821f8fb4180732625ef10ba.png",

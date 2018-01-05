@@ -24,21 +24,27 @@ import (
 	"github.com/hunterhug/rabbit/models/admin"
 )
 
-func Createtb() {
-	beego.Trace("data init start")
-	admin.InitData()
-	beego.Trace("data init end")
+func CreateTb() {
+	beego.Trace("data base init start")
+	admin.InitBaseData()
+	beego.Trace("data base init end")
+}
+
+func FillTb() {
+	beego.Trace("data fill init start")
+	TruncateRbacTable([]string{"category", "paper", "roll"})
+	Connect()
+	admin.FillData()
+	beego.Trace("data fill init end")
 }
 
 func Syncdb(force bool) {
-	beego.Trace("db, sync db start")
-
+	beego.Trace("sync db start")
 	Createdb(force)
 	Connect()
 	CreateConfig()
-	Createtb()
-
-	beego.Trace("sync db end, please reopen app again")
+	CreateTb()
+	beego.Trace("sync db end")
 }
 
 func UpdateRbac() {

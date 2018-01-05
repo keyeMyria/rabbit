@@ -21,6 +21,7 @@ import (
 	"github.com/hunterhug/marmot/miner"
 	"github.com/hunterhug/rabbit/conf"
 	"github.com/hunterhug/rabbit/models/util"
+	"github.com/hunterhug/rabbit/models/zhihu"
 )
 
 func Run(config conf.FlagConfig) {
@@ -34,8 +35,20 @@ func initDb(config conf.FlagConfig) {
 	if !flag.Parsed() {
 		flag.Parse()
 	}
+
+	if *config.Fill == 1 {
+		util.FillTb()
+		os.Exit(0)
+	}
+
+	if *config.Fill == 2 {
+		zhihu.FillTb()
+		os.Exit(0)
+	}
+
 	if *config.DbInit {
 		util.Syncdb(*config.DbInitForce)
+		beego.Trace("please reopen app again")
 		os.Exit(0)
 	}
 	if *config.Rbac {

@@ -35,6 +35,7 @@ func init() {
 	flags.DbInit = flag.Bool("db", false, "init db")
 	flags.DbInitForce = flag.Bool("f", false, "force init db first drop db then rebuild it")
 	flags.Rbac = flag.Bool("rbac", false, "rebuild rbac database tables")
+	flags.Fill = flag.Int("fill", 0, "0 stand for not fill data, 1 fill base data, 2 zhihu data")
 	home := flag.String("home", "", "home template")
 	config := flag.String("config", "", "config file position if empty use default")
 
